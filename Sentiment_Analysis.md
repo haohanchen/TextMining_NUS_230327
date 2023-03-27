@@ -242,7 +242,7 @@ d_tokenized_s_afinn_agg = d_fulltext %>%
 # Change of sentiment over time?
 d_tokenized_s_afinn_agg %>%
   ggplot(aes(x = date_of_speech, y = sentiment_score)) +
-  geom_point() +
+  geom_point(alpha = 0.6) +
   geom_smooth() +
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
@@ -287,7 +287,7 @@ d_tokenized_s_afinn_agg = d_fulltext %>%
 # Change of sentiment over time?
 d_tokenized_s_afinn_agg %>%
   ggplot(aes(x = date_of_speech, y = sentiment_score)) +
-  geom_point() +
+  geom_point(alpha = 0.6) +
   geom_smooth() +
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
@@ -298,3 +298,102 @@ d_tokenized_s_afinn_agg %>%
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
 ![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+## Calculate Some Fine-Grained Sentiment Scores
+
+``` r
+dict_nrc
+```
+
+    ## # A tibble: 13,872 × 2
+    ##    word        sentiment
+    ##    <chr>       <chr>    
+    ##  1 abacus      trust    
+    ##  2 abandon     fear     
+    ##  3 abandon     negative 
+    ##  4 abandon     sadness  
+    ##  5 abandoned   anger    
+    ##  6 abandoned   fear     
+    ##  7 abandoned   negative 
+    ##  8 abandoned   sadness  
+    ##  9 abandonment anger    
+    ## 10 abandonment fear     
+    ## # … with 13,862 more rows
+
+``` r
+d_tokenized_s_nrc = d_tokenized_s %>%
+  inner_join(dict_nrc, by = "word", multiple = "all")
+
+d_tokenized_s_nrc_agg = d_tokenized_s_nrc %>%
+  group_by(uid, date_of_speech, sentiment) %>%
+  count() %>%
+  pivot_wider(names_from = "sentiment", values_from = "n", 
+              names_prefix = "sentiment_score_")
+
+names(d_tokenized_s_nrc_agg)
+```
+
+    ##  [1] "uid"                          "date_of_speech"              
+    ##  [3] "sentiment_score_anger"        "sentiment_score_anticipation"
+    ##  [5] "sentiment_score_disgust"      "sentiment_score_fear"        
+    ##  [7] "sentiment_score_joy"          "sentiment_score_negative"    
+    ##  [9] "sentiment_score_positive"     "sentiment_score_sadness"     
+    ## [11] "sentiment_score_surprise"     "sentiment_score_trust"
+
+``` r
+# Change of sentiment over time?
+d_tokenized_s_nrc_agg %>%
+  ggplot(aes(x = date_of_speech, y = sentiment_score_sadness)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth() +
+  labs(
+    title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
+  ) +
+  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 14 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 14 rows containing missing values (geom_point).
+
+![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+``` r
+# Normalize the sentiment scores
+d_tokenized_s_nrc = d_tokenized_s %>%
+  group_by(uid) %>%
+  mutate(doc_length = n()) %>%
+  ungroup() %>%
+  inner_join(dict_nrc, by = "word", multiple = "all")
+
+d_tokenized_s_nrc_agg = d_tokenized_s_nrc %>%
+  group_by(uid, date_of_speech, sentiment) %>%
+  summarise(n = n() / mean(doc_length)) %>%
+  pivot_wider(names_from = "sentiment", values_from = "n", 
+              names_prefix = "sentiment_score_")
+```
+
+    ## `summarise()` has grouped output by 'uid', 'date_of_speech'. You can override
+    ## using the `.groups` argument.
+
+``` r
+# Change of sentiment over time?
+d_tokenized_s_nrc_agg %>%
+  ggplot(aes(x = date_of_speech, y = sentiment_score_sadness)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth() +
+  labs(
+    title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
+  ) +
+  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 14 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 14 rows containing missing values (geom_point).
+
+![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->

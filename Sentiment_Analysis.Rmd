@@ -126,7 +126,7 @@ d_tokenized_s_afinn_agg = d_fulltext %>%
 # Change of sentiment over time?
 d_tokenized_s_afinn_agg %>%
   ggplot(aes(x = date_of_speech, y = sentiment_score)) +
-  geom_point() +
+  geom_point(alpha = 0.6) +
   geom_smooth() +
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
@@ -160,11 +160,64 @@ d_tokenized_s_afinn_agg = d_fulltext %>%
 # Change of sentiment over time?
 d_tokenized_s_afinn_agg %>%
   ggplot(aes(x = date_of_speech, y = sentiment_score)) +
-  geom_point() +
+  geom_point(alpha = 0.6) +
   geom_smooth() +
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
   ) +
   xlab("Date") + ylab("Sentiment Scores (Normalized)")
 
+```
+
+## Calculate Some Fine-Grained Sentiment Scores
+
+```{r}
+dict_nrc
+
+d_tokenized_s_nrc = d_tokenized_s %>%
+  inner_join(dict_nrc, by = "word", multiple = "all")
+
+d_tokenized_s_nrc_agg = d_tokenized_s_nrc %>%
+  group_by(uid, date_of_speech, sentiment) %>%
+  count() %>%
+  pivot_wider(names_from = "sentiment", values_from = "n", 
+              names_prefix = "sentiment_score_")
+
+names(d_tokenized_s_nrc_agg)
+
+# Change of sentiment over time?
+d_tokenized_s_nrc_agg %>%
+  ggplot(aes(x = date_of_speech, y = sentiment_score_sadness)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth() +
+  labs(
+    title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
+  ) +
+  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+```
+
+```{r}
+# Normalize the sentiment scores
+d_tokenized_s_nrc = d_tokenized_s %>%
+  group_by(uid) %>%
+  mutate(doc_length = n()) %>%
+  ungroup() %>%
+  inner_join(dict_nrc, by = "word", multiple = "all")
+
+d_tokenized_s_nrc_agg = d_tokenized_s_nrc %>%
+  group_by(uid, date_of_speech, sentiment) %>%
+  summarise(n = n() / mean(doc_length)) %>%
+  pivot_wider(names_from = "sentiment", values_from = "n", 
+              names_prefix = "sentiment_score_")
+
+
+# Change of sentiment over time?
+d_tokenized_s_nrc_agg %>%
+  ggplot(aes(x = date_of_speech, y = sentiment_score_sadness)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth() +
+  labs(
+    title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
+  ) +
+  xlab("Date") + ylab("Sentiment Scores (Sadness)")
 ```
