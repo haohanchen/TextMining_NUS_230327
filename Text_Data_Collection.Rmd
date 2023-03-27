@@ -26,6 +26,9 @@ parsed_pdf = pdftools::pdf_text("data/parse_sample.pdf")
 # Check: What is the output like? What is the length and why?
 length(parsed_pdf)
 print(parsed_pdf)
+
+# Save parsed text
+write(parsed_pdf, "data/parse_sample_out_pdf.txt")
 ```
 
 ## Parse JSON files
@@ -93,3 +96,9 @@ parsed_html_title = parsed_html %>%
 ```
 
 ![A screenshot showing how I identify sections of interest on the webpage using `SelectorGadget` in Google Chrome](images/image-695647128.png)
+
+```{r}
+# Save the parsed text
+write(parsed_html_speech, "data/parse_sample_out_html_speech.txt")
+write(parsed_html_title, "data/parse_sample_out_html_title.txt")
+```
