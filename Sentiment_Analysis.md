@@ -299,7 +299,7 @@ d_tokenized_s_afinn_agg %>%
 
 ![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
-## Calculate Some Fine-Grained Sentiment Scores
+## Calculate Scores of Emotions
 
 ``` r
 dict_nrc
