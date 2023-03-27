@@ -1,4 +1,4 @@
-Lab: Tokenization, Wrangling, EDA
+Lab: Sentiment Analysis
 ================
 Haohan Chen (HKU)
 2023-03-27

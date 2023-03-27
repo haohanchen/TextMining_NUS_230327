@@ -1,5 +1,5 @@
 ---
-title: "Lab: Tokenization, Wrangling, EDA"
+title: "Lab: Sentiment Analysis"
 author: "Haohan Chen (HKU)"
 date: "`r Sys.Date()`"
 output: rmarkdown::github_document
