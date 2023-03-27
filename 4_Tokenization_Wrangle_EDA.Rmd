@@ -135,7 +135,7 @@ wordcloud(
 
 ```
 
-```{r}
+```{r, results='hide'}
 # The third wordcloud package
 # https://r-graph-gallery.com/196-the-wordcloud2-library.html
 if (!require(wordcloud2)) install.packages("wordcloud2")
