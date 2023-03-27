@@ -228,7 +228,7 @@ d_fulltext %>%
   labs(title = "How Frequent Did the Hong Kong Chief Executive Mention Singapore?")
 ```
 
-<img src="Basic_String_Operations_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="/Users/haohanchen/Library/CloudStorage/GoogleDrive-haohanch@gmail.com/My Drive/TEACHING/CSS/TextMining_NUS_230327/note/3_Basic_String_Operations_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ## More text operation of this kind?
 

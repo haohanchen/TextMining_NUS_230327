@@ -2,6 +2,8 @@
 title: "Lab: Tokenization, Wrangling, EDA"
 author: "Haohan Chen (HKU)"
 date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "note") })
 output: rmarkdown::github_document
 always_allow_html: true
 editor_options: 
@@ -193,7 +195,7 @@ d_tokenized_s_nrc_agg %>%
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
   ) +
-  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+  xlab("Date") + ylab("Sadness Scores (Normalized)")
 ```
 
 ```{r}
@@ -219,5 +221,5 @@ d_tokenized_s_nrc_agg %>%
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
   ) +
-  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+  xlab("Date") + ylab("Sadness Scores (Normalized)")
 ```

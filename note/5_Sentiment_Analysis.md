@@ -252,7 +252,7 @@ d_tokenized_s_afinn_agg %>%
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](/Users/haohanchen/Library/CloudStorage/GoogleDrive-haohanch@gmail.com/My%20Drive/TEACHING/CSS/TextMining_NUS_230327/note/5_Sentiment_Analysis_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 # To do it better, we can normalize the sentiment scores by document lengths
@@ -297,7 +297,7 @@ d_tokenized_s_afinn_agg %>%
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](/Users/haohanchen/Library/CloudStorage/GoogleDrive-haohanch@gmail.com/My%20Drive/TEACHING/CSS/TextMining_NUS_230327/note/5_Sentiment_Analysis_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ## Calculate Scores of Emotions
 
@@ -349,7 +349,7 @@ d_tokenized_s_nrc_agg %>%
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
   ) +
-  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+  xlab("Date") + ylab("Sadness Scores (Normalized)")
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
@@ -358,7 +358,7 @@ d_tokenized_s_nrc_agg %>%
 
     ## Warning: Removed 14 rows containing missing values (geom_point).
 
-![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](/Users/haohanchen/Library/CloudStorage/GoogleDrive-haohanch@gmail.com/My%20Drive/TEACHING/CSS/TextMining_NUS_230327/note/5_Sentiment_Analysis_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ``` r
 # Normalize the sentiment scores
@@ -387,7 +387,7 @@ d_tokenized_s_nrc_agg %>%
   labs(
     title = "Sentiment Scores of Hong Kong CE's Speeches and Articles"
   ) +
-  xlab("Date") + ylab("Sentiment Scores (Sadness)")
+  xlab("Date") + ylab("Sadness Scores (Normalized)")
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
@@ -396,4 +396,4 @@ d_tokenized_s_nrc_agg %>%
 
     ## Warning: Removed 14 rows containing missing values (geom_point).
 
-![](Sentiment_Analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](/Users/haohanchen/Library/CloudStorage/GoogleDrive-haohanch@gmail.com/My%20Drive/TEACHING/CSS/TextMining_NUS_230327/note/5_Sentiment_Analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->

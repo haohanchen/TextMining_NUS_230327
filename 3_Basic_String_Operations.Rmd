@@ -3,6 +3,8 @@ title: "Lab: Basic String Operations"
 author: "Haohan Chen (HKU)"
 date: "`r Sys.Date()`"
 output: rmarkdown::github_document
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "note") })
 editor_options: 
   chunk_output_type: console
 ---
