@@ -26,12 +26,16 @@ library(tidyverse)
 ## Parse PDF files
 
 ``` r
-library(pdftools)
+if (!require("pdftools")) install.packages("pdftools")
 ```
+
+    ## Loading required package: pdftools
 
     ## Using poppler version 22.02.0
 
 ``` r
+library(pdftools)
+
 # Source: https://www.ceo.gov.hk/archive/5-term/eng/pdf/article20220530.pdf
 parsed_pdf = pdftools::pdf_text("data/parse_sample.pdf")
 
@@ -62,8 +66,10 @@ write(parsed_pdf, "data/parse_sample_out_pdf.txt")
 ## Parse JSON files
 
 ``` r
-library(jsonlite)
+if (!require("jsonlite")) install.packages("jsonlite")
 ```
+
+    ## Loading required package: jsonlite
 
     ## 
     ## Attaching package: 'jsonlite'
@@ -73,6 +79,8 @@ library(jsonlite)
     ##     flatten
 
 ``` r
+library(jsonlite)
+
 # Source: https://gist.github.com/hrp/900964
 parsed_json = jsonlite::read_json("data/parse_sample.json")
 names(parsed_json)
@@ -98,6 +106,12 @@ parsed_json$text
     ## [1] "RT @PostGradProblem: In preparation for the NFL lockout, I will be spending twice as much time analyzing my fantasy baseball team during ..."
 
 ## Parse XML files
+
+``` r
+if (!require("xml2")) install.packages("xml2")
+```
+
+    ## Loading required package: xml2
 
 ``` r
 library(xml2)

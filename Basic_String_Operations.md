@@ -1,14 +1,14 @@
-Lab: Basic Text Operations
+Lab: Basic String Operations
 ================
 Haohan Chen (HKU)
 2023-03-27
 
 ## Introduction
 
-This notebook demonstrate text data cleaning. We will use two datasets
-as examples: the index table that we just obtained together and the full
-set of documents that I have retrieved and parsed using the methods I
-have introduced.
+This notebook demonstrates basic string operations. I will use two
+datasets as examples: the index table that we just obtained together and
+the full set of documents that I have retrieved and parsed using the
+methods I have introduced.
 
 ``` r
 library(tidyverse)
@@ -228,7 +228,7 @@ d_fulltext %>%
   labs(title = "How Frequent Did the Hong Kong Chief Executive Mention Singapore?")
 ```
 
-<img src="Text_Data_Cleaning_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="Basic_String_Operations_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ## More text operation of this kind?
 

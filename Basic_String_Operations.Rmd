@@ -1,5 +1,5 @@
 ---
-title: "Lab: Basic Text Operations"
+title: "Lab: Basic String Operations"
 author: "Haohan Chen (HKU)"
 date: "`r Sys.Date()`"
 output: rmarkdown::github_document
@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-This notebook demonstrate text data cleaning. We will use two datasets as examples: the index table that we just obtained together and the full set of documents that I have retrieved and parsed using the methods I have introduced.
+This notebook demonstrates basic string operations. I will use two datasets as examples: the index table that we just obtained together and the full set of documents that I have retrieved and parsed using the methods I have introduced.
 
 ```{r}
 library(tidyverse)
