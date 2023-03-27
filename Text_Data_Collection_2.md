@@ -77,11 +77,12 @@ parsed_dates = retrieved_index_dates %>% xml_text()
 
 ``` r
 # Finally, we can build an "Index Table"
-table_index = tibble(
-  date = parsed_dates,
-  title = parsed_titles,
-  url = parsed_url
-)
+table_index = 
+  tibble(
+    date = parsed_dates,
+    title = parsed_titles,
+    url = parsed_url
+    )
 ```
 
 ``` r

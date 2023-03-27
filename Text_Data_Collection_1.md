@@ -5,8 +5,8 @@ Haohan Chen (HKU)
 
 ## Introduction
 
-This notebook demonstration how to parse text data from a single
-document containing text data of interest.
+This notebook demonstrate how to parse text data from common document
+format.
 
 ``` r
 library(tidyverse)
